@@ -1,8 +1,8 @@
-function ahba_samplefind(stru_name, roi)
-
-
-
-roi = {'I','II','III','IV','V','VI','VII','VIII','IX','XX'};
+function idx = ahba_samplefind(stru_name, roi)
+% Find sample by structure name
+if nargin < 2
+    roi = {'I','II','III','IV','V','VI','VII','VIII','IX','XX'};
+end
 
 idx = contains(stru_name,roi);
 nnz(idx)
@@ -18,8 +18,4 @@ hold on
 scatter3(mni_coords(~idx,1),mni_coords(~idx,2),mni_coords(~idx,3))
 
 
-
-
-
-idx = find(contains(stru_name,roi,'IgnoreCase',true), 1);
 
