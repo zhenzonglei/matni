@@ -8,12 +8,10 @@ if nargin < 3, dist_thr = 2; end
 ni = niftiRead(roi_file);
 
 % match coords to voxel
-[I,J,K] =  ind2sub(size(ni.data),find(ni.data));
-vol_coords = mrAnatXformCoords(ni.qto_xyz, [I,J,K]);
-D = pdist2(coords,vol_coords);
-coords_vox = find(any(D < dist_thr,2));
+crs = mrAnatXformCoords(ni.qto_ijk, coords);
+coords_vox = sub2ind(size(ni.data),crs(:,1), crs(:,2),crs(:,3));
 
-% mathc coords to roi
+% match coords to roi
 roi_id = unique(ni.data(:));
 roi_id(roi_id==0) = [];
 n_roi = length(roi_id);

@@ -13,7 +13,7 @@ if strcmp(coords_mode,'RAS')
 end
 
 % make sphere roi around each coords
-coords = map_makevolroi(coords,ref.dim(1:3),radius);
+coords = map_make_volroi(coords,ref.dim(1:3),radius);
 
 % make probability map
 pm = zeros(ref.dim(1:3));

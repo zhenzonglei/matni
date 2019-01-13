@@ -1,7 +1,8 @@
-function [roi_sample,roi_id,roi_name] = map_sample2volatlas(coords,atlas_name,dist_thr,is_rm_overlap)
-%[roi_sample,roi_id,roi_name] = mapSample2VolAtlas(coords,atlas_name)
+function [coords_roi,roi_id,roi_name] = map_sample2volatlas(coords,atlas_name,...
+    dist_thr,is_rm_overlap)
+%[coords_roi,roi_id,roi_name] = mapSample2VolAtlas(coords,atlas_name)
 
-if nargin < 4, is_rm_overlap = false; end 
+if nargin < 4, is_rm_overlap = false; end
 if nargin < 3, dist_thr = 2; end
 if nargin < 2, atlas_name = 'cyto'; end
 
@@ -14,9 +15,15 @@ switch atlas_name
         
     case 'cyto'
         atlas = fullfile(data_dir,'cytoAtlas','MNI152_cytoMPM_thr25_2mm.nii.gz');
-         label = fullfile(data_dir,'cytoAtlas','cytoLabelShort.txt');
-         % label = fullfile(data_dir,'cytoAtlas','cytoLabel.txt');
-     
+        label = fullfile(data_dir,'cytoAtlas','cytoLabelShort.txt');
+        % label = fullfile(data_dir,'cytoAtlas','cytoLabel.txt');
+        
+    case 'buckner'
+        
+        atlas = fullfile(data_dir,'bucknerAtlas',...
+            'Buckner2011_17Networks_MNI152_FreeSurferConformed1mm_TightMask.nii.gz');
+        label = fullfile(data_dir,'bucknerAtlas','Buckner2011_17Networks_label.txt');
+        
     otherwise
         error('Wrong volume atlas');
 end
@@ -25,22 +32,23 @@ end
 % Load atlas label
 fid = fopen(label);
 label = textscan(fid,'%d %s');
-roi_id = label{1}; roi_name = label{2};
+roi_id = label{1};roi_name = label{2};
 fclose(fid);
 n_roi = length(roi_id);
 
 % Map samples to atlas
-roi_sample = map_match_coords2voi(coords,atlas,dist_thr);
+[~,coords_roi,roi_id] = map_match_coords2vol(coords,atlas,dist_thr);
+
 
 % remove overlap samples
 if is_rm_overlap
-    roi_sample(sum(roi_sample,2) > 1,:) =  false;
+    coords_roi(sum(coords_roi,2) > 1,:) =  false;
 end
 
 
 figure('units','normalized','outerposition',[0 0 1 1],'name','Sample Number in ROI');
-roi_sample_num = sum(roi_sample);
-bar(roi_sample_num);
+coords_roi_num = sum(coords_roi);
+bar(coords_roi_num);
 ylabel('Sample number in ROI');
 set(gca,'xtick',1:n_roi, 'xticklabel',roi_name,'xticklabelrotation',90);
 box off
