@@ -1,10 +1,14 @@
-function [p,goi,goni] = ahba_anova(expr,sys_sample,sys_name, top)
-% [p,goi,goni] = ahba_anova(expr,sys_sample,sys_name, top)
+function p = ahba_anova(expr,sys_sample,sys_name)
+% p = ahba_anova(expr,sys_sample,sys_name)
 % anova for each gene across brain system
 % expr, n_sample x n_genes
 % sys_sample, n_sample x n_sys
-% goi, gene of interest; goni, gene of non-interest
-if nargin < 4, top = 200; end
+
+
+if size(expr,1) ~= size(sys_sample,1)
+    error('expr and sys_sample not match.')
+end
+
 n_sys = size(sys_sample,2);
 n_sys_sample = sum(sys_sample);
 
@@ -28,9 +32,4 @@ for g = 1:n_gene
     p(g) = anova1(data,group,'off');
 end
 
-sig = -log10(p);
-ng = top/n_gene*100;
-gpct = prctile(sig,[ng, 100-ng]);
-goi = sig > gpct(2);
-goni = sig < gpct(1);
-
+p = -log10(p);

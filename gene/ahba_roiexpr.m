@@ -1,5 +1,5 @@
 function [roi_expr,roi_expr_sem] = ahba_roiexpr(expr,roi_idx,donor)
-% [roi_expr,roi_expr_sem] = calcRoiExpr(expr,roi_idx)
+% [roi_expr,roi_expr_sem] = ahba_roiexpr(expr,roi_idx)
 % roi_idx, nSample x nRoi, logical matrix
 
 if nargin < 3, donor = []; end 
@@ -23,8 +23,11 @@ roi_expr_sem = zeros(n_roi,n_gene,n_donor);
 for d = 1:n_donor
     for i = 1:n_roi
         I = roi_idx(:,i) & (donor == donor_id(d));
-        roi_expr(i,:,d) = mean(expr(I,:));
+        roi_expr(i,:,d) = mean(expr(I,:),1);
         roi_expr_sem(i,:,d) = std(expr(I,:))/sqrt(nnz(I));
     end
 end
 
+
+%  d(any(isnan(d),2),:) = [];
+% roi_expr = zscore(roi_expr,0,1); 
