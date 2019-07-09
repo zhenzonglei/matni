@@ -11,7 +11,7 @@ if nargin < 4, radius = 3; end
 % get vertex id for each sample
 dist = pdist2(sample_ras_coords,  double(vertex_coords));
 for s =  1:size(sample_ras_coords,1)
-    sample_roi_surf_idx{s} = find(dist(s,:) < 3);
+    sample_roi_surf_idx{s} = find(dist(s,:) < 5);
 end
 
 sample_on_surf = ~cellfun('isempty', sample_roi_surf_idx);

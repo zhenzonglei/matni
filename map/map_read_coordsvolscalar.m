@@ -23,7 +23,8 @@ else
 end
 
 % create sphere roi for each sample
-sample_roi_crs_coords = map_sphereroi(sample_crs_coords,nii.dim(1:3),radius);
+sample_roi_crs_coords  = map_make_volroi(sample_crs_coords,nii.dim(1:3),radius);
+
 
 % get meas for each sample
 meas = zeros(n_sample,n_meas);
