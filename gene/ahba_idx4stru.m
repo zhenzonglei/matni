@@ -1,7 +1,8 @@
 function [sample_stru_idx,stru_name, stru_id] = ...
-    ahba_sample2stru(sample_stru_id,sample_stru_name,is_merge_hemi)
+    ahba_idx4stru(sample_stru_id,sample_stru_name,is_merge_hemi)
 % [sample_stru_idx,stru_name, stru_id] = ...
-%    ahba_sample2stru(sample_stru_id,sample_stru_name,is_merge_hemi)
+%    ahba_idx4stru(sample_stru_id,sample_stru_name,is_merge_hemi)
+% make idx vector for samples within set of stru_name and stru_id
     
     
 if nargin < 3, is_merge_hemi = true; end
