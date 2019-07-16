@@ -1,6 +1,6 @@
 function [roi_expr,roi_expr_sem] = ahba_roiexpr(expr,roi_idx,donor)
 % [roi_expr,roi_expr_sem] = ahba_roiexpr(expr,roi_idx)
-% roi_idx, nSample x nRoi, logical matrix
+% roi_idx, nSample x 1, logical matrix
 
 if nargin < 3, donor = []; end 
 

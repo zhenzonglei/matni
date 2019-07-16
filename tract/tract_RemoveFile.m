@@ -1,5 +1,5 @@
-function dwiRemoveFile(dwiDir,sessid, runName,fileName)
-% dwiRemoveFile(dwiDir,sessid, runName,fileName)
+function tract_RemoveFile(dwiDir,sessid, runName,fileName)
+% tract_RemoveFile(dwiDir,sessid, runName,fileName)
 % fileName, cell array, it should be specificed according to the rundir(i.e.,96dir_runN)
 % can only remove file,but not dir. for dir, it is dangous
 

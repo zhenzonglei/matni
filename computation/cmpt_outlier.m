@@ -1,4 +1,4 @@
-function I = cmpt_outlier(X,dim,c,meth)
+function [X,I] = cmpt_outlier(X,dim,c,meth)
 % I = cmpt_outlier(X,dim,c,meth)
 if nargin < 4, meth = 'std'; end
 if nargin < 3, c = 3; end

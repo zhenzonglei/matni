@@ -1,7 +1,7 @@
 function [expr,mni_coords,crs_coords,donor,symbol,stru_name,stru_id,stru_acronym] = ...
-    poolDonor(dataDir,donorID,rawFile,norm)
+    ahba_poolDonor(dataDir,donorID,rawFile,norm)
 %  [expr,coords,donor,symbol,stru_name,stru_id,stru_acronym] = ...
-%   poolDonor(dataDir,donorID,rawFile,norm)
+%   ahba_poolDonor(dataDir,donorID,rawFile,norm)
 
 if nargin < 4, norm = true; end
 if nargin < 3, rawFile = 'gene_entrez.mat'; end

@@ -1,5 +1,5 @@
-function cmdEngine(dwiDir,sessid, runName, cmdStr, bkgrnd, verbose)
-%  cmdEngine(dwiDir,sessid, runName, cmdStr, bkgrnd, verbose)
+function utils_cmdengine(dwiDir,sessid, runName, cmdStr, bkgrnd, verbose)
+%  utils_cmdengine(dwiDir,sessid, runName, cmdStr, bkgrnd, verbose)
 % Run cmdStr for for subjects and runs
 % the engine will generate commands for each session and each run by
 % replace sessid string(SESS) and run string(RUN) in the cmdStr

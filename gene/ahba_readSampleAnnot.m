@@ -1,5 +1,5 @@
-function sample = readSampleAnnot(annotFile)
-% sample = readSampleAnnot(annotFile)
+function sample = ahba_readSampleAnnot(annotFile)
+% sample = ahba_readSampleAnnot(annotFile)
 % annotFile = 'SampleAnnot.csv';
 
 fmt = '%d %d %d %s %q %q %d %d %d %d %f %f %f';

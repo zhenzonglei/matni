@@ -1,12 +1,12 @@
-function cleanProbe(dataDir,sessid,rawFile,badProbe)
-% cleanNonEntrezProbe(dataDir,sessid,rawFile,targ)
+function ahba_cleanProbe(dataDir,sessid,rawFile,badProbe)
+% ahba_cleanNonEntrezProbe(dataDir,sessid,rawFile,targ)
 % Extract the probes which are in entrez
 % dataDir, Dir for session
 % sessid, donor Id
 % rawFile, raw ABA data file
 % badProbe: na, na+nonentrez, nonentrez+nocall
 
-if nargin < 4, badProbe = 'na'; end
+if nargin < 4, badProbe = 'na+nonentrez'; end
 if nargin < 3, rawFile='raw.mat'; end
 
 % only the genes with entrez id and correct symbol are kept.

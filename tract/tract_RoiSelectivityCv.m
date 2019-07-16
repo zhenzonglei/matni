@@ -1,4 +1,4 @@
-function selVal = dwiRoiSelectivityCv(dwiDir, sessid, contrast, roiName)
+function selVal = tract_RoiSelectivityCv(dwiDir, sessid, contrast, roiName)
 % sessid, a 1xN cell array
 % constrast, a 1xN vector, actvie =1, inactive = -1
 % roiName, a 1xN cell array

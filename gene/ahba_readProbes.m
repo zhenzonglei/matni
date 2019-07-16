@@ -1,4 +1,4 @@
-function probe = readProbes(probeFile)
+function probe = ahba_readProbes(probeFile)
 % probe = readProbes(probeFile) 
 % probeFile = 'Probes.csv';
 

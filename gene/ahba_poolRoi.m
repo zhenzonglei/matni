@@ -1,4 +1,4 @@
-function pr_roi =  poolRoi(roi,group,group_name)
+function pr_roi =  ahba_poolRoi(roi,group,group_name)
 % pool roi according to the group
 % roi,  nRoixnDonor structure array
 % pr_roi, nGroupxnDonor structure array

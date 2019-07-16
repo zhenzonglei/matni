@@ -1,5 +1,5 @@
-function [sesspar,sessid] = readSessionFile(sessparFile,sessidFile)
-% [sesspar,sessid] = readSess(sessparFile,sessidFile)
+function [sesspar,sessid] = utils_readsessfile(sessparFile,sessidFile)
+% [sesspar,sessid] = utils_readsessfile(sessparFile,sessidFile)
 % read the parent dir and session id from corresponding files
 % sessparFile: sesspar file which lists parent dir for sessions, str
 % fsessidFile: sessid  file, which lists session id,  str

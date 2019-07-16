@@ -1,5 +1,5 @@
 function [sample_roi_idx,roi_id,roi_name] = map_sample2surfatlas(coords,hemi,dist_thr)
-%[sample_roi_idx,roi_id,roi_name] = mapSample2BensonAtlas(coords,hemi,dist_thr)
+%[sample_roi_idx,roi_id,roi_name] = map_sample2surfatlas(coords,hemi,dist_thr)
 if nargin < 3, dist_thr = 5; end
 if nargin < 2 , hemi = 'L'; end;
 brainmap_dir = '/nfs/e5/stanford/ABA/brainmap';

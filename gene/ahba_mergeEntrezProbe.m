@@ -1,4 +1,4 @@
-function mergeEntrezProbe(dataDir,sessid,raw_entrez_file)
+function ahba_mergeEntrezProbe(dataDir,sessid,raw_entrez_file)
 % Extract the genes which are in entrez
 % dataDir, Dir for session
 % sessid, donor id

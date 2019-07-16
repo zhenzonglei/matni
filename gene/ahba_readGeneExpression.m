@@ -1,5 +1,5 @@
-function expression = readGeneExpression(expressionFile)
-% expression = readGeneExpression(expressionFile)
+function expression = ahba_readGeneExpression(expressionFile)
+% expression = ahba_readGeneExpression(expressionFile)
 % expressionFile = 'MicroarrayExpression.csv'; 
 
 M = csvread(expressionFile); 

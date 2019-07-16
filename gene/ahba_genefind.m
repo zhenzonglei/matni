@@ -1,7 +1,9 @@
 function [symbol,targ_index,src_index] = ahba_genefind(targ,src,mode)
+% [symbol,targ_index,src_index] = ahba_genefind(targ,src,mode)
 % find the index of src genes in targ gene list
 % targ, targ gene cell array
-%  src, source, src gene array
+% src, source, src gene array
+% mode, 'match', 'contatin'
 if nargin < 3, mode = 'match'; end
 
 nS = length(src);

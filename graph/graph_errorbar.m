@@ -1,4 +1,4 @@
-function hb = plotErrorBar(Y,E)
+function hb = graph_errorbar(Y,E)
 %  hb = plotErrorBar(Y,E)
 % Plot the columns of the M-by-N matrix Y as M groups of N vertical bars
 % with error
