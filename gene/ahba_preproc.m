@@ -10,22 +10,21 @@ donors_id = {'H0351.1009', 'H0351.1012', 'H0351.1015', ...
     'H0351.1016','H0351.2001','H0351.2002'};
 n_donor = length(donors_id);
 
-for d = 1:n_donor
-    % pack all csv from each donor into a mat file
-    ahba_packGeneData2Mat(data_dir, donors_id(d))
-    
-    % clean na and non-entrez probe
-    ahba_cleanProbe(data_dir, donors_id(d))
-    
-    
-    % merge(averge) probes from a gene
-    ahba_mergeEntrezProbe(data_dir, donors_id(d))
-end
+% pack all csv from each donor into a mat file
+ahba_packGeneData2Mat(data_dir, donors_id)
 
-% pool data from all donor into a mat 
+% clean na and non-entrez probe
+ahba_cleanProbe(data_dir, donors_id)
+
+
+% merge(averge) probes from a gene
+ahba_mergeEntrezProbe(data_dir, donors_id)
+
+
+% pool data from all donor into a mat
 geneFile = 'gene_entrez.mat';
 [expr,mni_coords,crs_coords,donor,symbol,stru_name,stru_id,stru_acronym] = ...
-    ahba_poolDonor(data_dir,donors_id(1:6),geneFile);
+    ahba_poolDonor(data_dir,donors_id,geneFile);
 
 if norm
     save(fullfile(projDir,'data',['pooled_norm_',geneFile]));
