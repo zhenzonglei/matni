@@ -6,7 +6,7 @@ function [meas,sample_on_surf] = map_read_coordsurfscalar(sample_coords,...
 % n_ring is the order of the rings
 % surf_space, 'MNI305','MNI152','Native'
 
-if nargin < 5, n_ring = 3; end
+if nargin < 5, n_ring = 1; end
 if nargin < 4, surf_space  = 'MNI152';end
 
 switch surf_space
