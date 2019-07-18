@@ -1,4 +1,4 @@
-function [meas,sample_on_surf] = map_read_coordsurfscalar(sample_coords,...
+function [meas,sample_on_surf] = mm_readcoordsurfscalar(sample_coords,...
     surf_geometry_file, surf_meas_file, surf_space,n_ring)
 % [meas,sample_on_surf] = map_read_surfscalar(sample_coords,...
 %     surf_geometry_file, surf_meas_file, surf_space,n_ring)
@@ -39,7 +39,7 @@ end
 
 % create surface roi for each sample
  [sample_roi_surf_idx,sample_on_surf] = ...
-    map_make_surfroi(sample_ras_coords,vertex_coords, faces, n_ring);
+    mm_makesurfroi(sample_ras_coords,vertex_coords, faces, n_ring);
 
 % read meas
 [~,~,meas_ext] = fileparts(surf_meas_file);
