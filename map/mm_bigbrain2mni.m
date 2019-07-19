@@ -11,6 +11,6 @@ bb2mni = [
     0                   0                  0                1];
 
 bb_coords = [bb_coords,ones(size(bb_coords,1),1)];
-mni_coords = inv(bb2mni)*bb_coords';
+mni_coords = bb2mni*bb_coords';
 mni_coords = mni_coords(1:3,:)';
 
