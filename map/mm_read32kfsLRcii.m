@@ -1,4 +1,4 @@
-function [fsLR_idx,data] = map_read_32kfsLRcii(file_name,stru_name,fsLR_idx_only)
+function [fsLR_idx,data] = mm_read32kfsLRcii(file_name,stru_name,fsLR_idx_only)
 %[data,fsLR_idx] = read_32kfsLR_cifti(file_name,stru_name)
 % file_name, 32k_fsLR metric file
 if nargin < 3

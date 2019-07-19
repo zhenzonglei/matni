@@ -1,5 +1,5 @@
 function [sample_roi_surf_idx,sample_on_surf] = ...
-    map_make_surfroi(sample_ras_coords,vertex_coords, faces, radius)
+    mm_makesurfroi(sample_ras_coords,vertex_coords, faces, radius)
 % sample_roi_surf_idx = map_make_surfroi(sample_ras_coords,...
 %     vertex_coords, faces, radius)
 % Both vertex_coords and sample_ras_coords are ras coordinates 

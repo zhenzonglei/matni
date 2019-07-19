@@ -36,7 +36,8 @@ wb_cmd = sprintf('wb_command -metric-resample %s %s %s ADAP_BARY_AREA %s -area-m
     fs_map, fs_sph, fsLR_sph, fsLR_map, fs_shape, fsLR_shape);
 system(wb_cmd);
 
-% 
+
+
 % %% gii to dense scalar
 % lh_metric = sprintf('%s.%s.32k_fs_LR.gii',data_file_str,'L');
 % rh_metric = sprintf('%s.%s.32k_fs_LR.gii',data_file_str, 'R');

@@ -1,4 +1,4 @@
-function map_convert_vol2fsLR(atlasDir)
+function mm_convertvol2fsLR(atlasDir)
 
 %% map cytoAtlas to fsLR
 brainmap_dir = '/nfs/e5/stanford/ABA/brainmap';
@@ -22,7 +22,7 @@ for h = 1:2
     sprintf('wb_command -volume-to-surface-mapping %s %s %s -ribbon-constrained %s %s',...
         volume, surface,metric_out,in_surf,out_surf);
     
-    %
+   
     % vol_to_surf_mapping = ...
     % sprintf('wb_command -volume-to-surface-mapping %s %s %s -trilinear',...
     %     volume, surface,metric_out);
