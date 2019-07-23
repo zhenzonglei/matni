@@ -7,7 +7,7 @@ if nargin < 1, norm_axis = 'none'; end
 
 % load bigbrain hmp
 datadir = '/nfs/e5/stanford/ABA/brainmap/bigbrain';
-hmp = load(fullfile(datadir,'BigBrain_20um_163842_OldSurf_RL_Msp.mat'));
+hmp = load(fullfile(datadir,'bigbrain_20um_163842_OldSurf_RL_Msp.mat'));
 hmp = hmp.MspMatrix;
 
 % replace zeros profile with nan
