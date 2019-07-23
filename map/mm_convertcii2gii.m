@@ -32,20 +32,3 @@ for m = 1:length(hcp_group_map)
     end
 end
 cd(wdir);
-
-
-%% cifti read and write code
-% %% make group mean cifti map by self
-% wb_dir = '/usr/local/neurosoft/workbench/bin_linux64/wb_command';
-% allsubj_cifiti_file = fullfile('/nfs/e5/stanford/myelin/data',...
-%     'MyelinMap_BC_MSMAll.32k_fs_LR.dscalar.nii');
-% 
-% % cii = ciftiopen(allsubj_cifiti_file,wb_dir);
-% % data = mean(cii.cdata,2);
-% % 
-% group_data_dir = '/nfs/e5/stanford/ABA/data/brainmap/HCP';
-% group_cifti_file = fullfile(group_data_dir,...
-%     'HCP_Myelin_BC_MSMAll.32k_fs_LR.dscalar.nii');
-% % cii.cdata = data;
-% % ciftisavereset(cii,group_cifti_file,wb_dir);
-

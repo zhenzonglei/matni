@@ -1,7 +1,7 @@
 function [coords_vtx,coords_roi,roi_id] = ...
-map_match_coords2surf(coords,surf_file,dist_thr,label_file)
+mm_matchcoords2surf(coords,surf_file,dist_thr,label_file)
 % [coords_vtx,coords_roi,roi_id] = ...
-% map_match_coords2surf(coords,surf_file,dist_thr,label_file)
+% mm_matchcoords2surf(coords,surf_file,dist_thr,label_file)
 % mapping set of coords to surface vertex and label 
 
 

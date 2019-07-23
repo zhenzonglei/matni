@@ -1,4 +1,4 @@
-function map_convert_annot2dlabel(annotDir)
+function mm_convertannot2dlabel(annotDir)
 
 % ------------ map vcAtlas to fsLR-------------
 brainmap_dir = '/nfs/e5/stanford/ABA/brainmap';

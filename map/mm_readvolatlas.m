@@ -1,4 +1,4 @@
-function [meas,roi_id,roi_name] = map_read_volatlas(meas_vol_file, atlas_name)
+function [meas,roi_id,roi_name] = mm_readvolatlas(meas_vol_file, atlas_name)
 
 
 data_dir = '/nfs/e5/stanford/ABA/brainmap';
