@@ -1,4 +1,4 @@
-function map_convert_annot2vol(atlasDir)
+function mm_convertannot2vol(atlasDir)
 
 if nargin < 1
     atlasDir = '/sni-storage/kalanit/users/zhenzl/AllenHumanBrainGeneExpression/data/vcAtlas';

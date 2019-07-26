@@ -1,10 +1,10 @@
 function [sample_roi_surf_idx,sample_on_surf] = ...
     mm_makesurfroi(sample_ras_coords,vertex_coords, faces, radius)
-% sample_roi_surf_idx = map_make_surfroi(sample_ras_coords,...
-%     vertex_coords, faces, radius)
+% [sample_roi_surf_idx,sample_on_surf] = ...
+%    mm_makesurfroi(sample_ras_coords,vertex_coords, faces, radius)
 % Both vertex_coords and sample_ras_coords are ras coordinates 
 % radius is a int scalar,indicate rings 
-if nargin < 4, radius = 3; end
+if nargin < 4, radius = 2; end
 
 % sample_ras_coords = double(sample_ras_coords);
 

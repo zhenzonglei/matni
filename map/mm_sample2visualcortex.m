@@ -2,8 +2,6 @@ function idx = mm_sample2visualcortex(stru_name)
 % idx = mm_sample2visualcortex(stru_name)
 % map samples to visual cortex 
 
-
-
 areas = { 'angular gyrus', 'cuneus', 'fusiform','lingual','precuneus','occipital', 'temporal'};
 n_sample = length(stru_name);
 area_idx = false(n_sample, length(areas));
