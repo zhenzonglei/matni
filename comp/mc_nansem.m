@@ -1,4 +1,4 @@
-function se = nansem(x,w,dim)
+function se = mc_nansem(x,w,dim)
 % calculate sem, ignoring
 %
 %   m = nansem(x,w,dim)

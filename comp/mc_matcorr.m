@@ -1,4 +1,4 @@
-function  [rho,p] = matcorr(X,Y,index,meth)
+function  [rho,p] = mc_matcorr(X,Y,index,meth)
 %  [rho,p] = matcorr(X,Y,index,type) 
 % calculate the correlaiton between two matrix
 % X and Y are 2D matrices with the same size

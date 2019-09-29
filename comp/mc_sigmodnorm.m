@@ -1,4 +1,4 @@
-function sx = cmpt_sigmodnorm(x,dim)
+function sx = mc_sigmodnorm(x,dim)
 % sx = cmpt_sigmodnorm(x,dim)
 % scaled robust sigmoid (SRS) normalization
 
