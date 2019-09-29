@@ -1,4 +1,4 @@
-function map_overlay_coordsurf(sample_coords,vol_ref_file,vol_out_file,radius,coords_mode)
+function mm_overlaycoordsurf(sample_coords,vol_ref_file,vol_out_file,radius,coords_mode)
 % writeCoord2Volume(coords,vol_ref_file,vol_out_file,radius,coords_mode)
 % radius is in voxel unit
 

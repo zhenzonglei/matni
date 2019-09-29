@@ -1,5 +1,5 @@
-function [roi_value,roi_id,roi_name] = map_read_roiscalar(scalar_vol, roi_atlas, isnorm)
-% [roi_value,roi_id,roi_name] = map_read_roiscalar(scalar_vol, roi_atlas)
+function [roi_value,roi_id,roi_name] = mm_readroiscalar(scalar_vol, roi_atlas, isnorm)
+% [roi_value,roi_id,roi_name] = mm_read_roiscalar(scalar_vol, roi_atlas)
 % Read scalar value from volume from a set of roi in an atlas
 
 
