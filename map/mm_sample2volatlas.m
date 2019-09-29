@@ -50,7 +50,7 @@ switch atlas_name
 end
 
 % Map samples to atlas
-[~,coords_roi,roi_id] = map_match_coords2vol(coords,atlas,dist_thr);
+[~,coords_roi,roi_id] = mm_matchcoords2vol(coords,atlas,dist_thr);
 
 
 % Load atlas label

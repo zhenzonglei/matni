@@ -1,7 +1,9 @@
-function [X,I] = cmpt_outlier(X,dim,c,meth)
-% I = cmpt_outlier(X,dim,c,meth)
-if nargin < 4, meth = 'std'; end
-if nargin < 3, c = 3; end
+function [X,I] = mc_rmoutlier(X,dim,c,meth)
+% [X,I] = mc_rmoutlier(X,dim,c,meth)
+% replace outlier with NaN in output 
+% meth, 'std' or 'iqr'
+if nargin < 4, meth = 'iqr'; end
+if nargin < 3, c = 2; end
 if nargin < 2, dim = 1;end
 
 switch meth

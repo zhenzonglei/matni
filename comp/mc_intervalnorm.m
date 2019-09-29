@@ -1,6 +1,5 @@
-function rx = cmpt_intervalnorm(x,interval,dim)
-% rx = cmpt_rangenorm(x,range,dim)
-% scaled robust sigmoid (SRS) normalization
+function rx = mc_intervalnorm(x,interval,dim)
+% rx = mc_intervalnorm(x,range,dim)
 
 % [] is a special case for std and mean, just handle it out here.
 if isequal(x,[]), rx = x; return; end

@@ -1,5 +1,5 @@
-function dwiSegmentConnectome(dwiDir, sessid, runName, fgName, computeRoi,rmOutlier)
-% dwiSegmentConnectome(dwiDir, sessid, runName, fgName)
+function mt_SegmentConnectome(dwiDir, sessid, runName, fgName, computeRoi,rmOutlier)
+% mt_SegmentConnectome(dwiDir, sessid, runName, fgName)
 % fgName: full name of fg including path and postfix
 % foi, a vector to indicate fiber of interest
 % This function will run AFQ on a % given list of subjects and runs.

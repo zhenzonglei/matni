@@ -29,7 +29,7 @@ else
     roi_id = unique(surf_label);
     roi_id(roi_id==0) = [];
     n_roi = length(roi_id);
-    
+        
     coords_roi = false(n_samp,n_roi);
     for i = 1:n_roi
         % get coors for a roi

@@ -1,4 +1,4 @@
-function [z,mu,sigma] = nanzscore(x,flag,dim)
+function [z,mu,sigma] = mc_nanzscore(x,flag,dim)
 %ZSCORE Standardized z score.
 %   Z = ZSCORE(X) returns a centered, scaled version of X, the same size as X.
 %   For vector input X, Z is the vector of z-scores (X-MEAN(X)) ./ STD(X). For
