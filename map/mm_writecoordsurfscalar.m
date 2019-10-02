@@ -1,6 +1,6 @@
 function mm_writecoordsurfscalar(sample_coords, sample_expr,...
     out_prefix, n_ring, surf_space)
-% saveSample2Surface(sample_coords, sample_expr,save_file, n_ring, surf_space)
+% mm_writecoordsurfscalar(sample_coords, sample_expr,out_prefix, n_ring, surf_space)
 % sample_coords,surf_geometry_file, surf_meas_file are in the same space
 % n_ring is the order of the rings
 % surf_space, 'MNI305','MNI152','Native'
@@ -64,7 +64,7 @@ for h = 1:length(hemi)
     hemi_coords = sample_ras_coords(hemi_sample_idx,:);
     
     [sample_surf_idx, sample_on_surf] = ...
-        makeSurfRoiCoords(hemi_coords, vertex_coords, faces, n_ring);
+        mm_makesurfroi(hemi_coords, vertex_coords, faces, n_ring);
     
     hemi_sample_idx = hemi_sample_idx(sample_on_surf);
     

@@ -39,14 +39,14 @@ end
 cd(cwd);
 
 %% git mv for mrfree
-mrf = '/nfs/e5/stanford/codebase/mrfree/bin';
-cwd = pwd; cd(mrf)
-f = dir(mrf);
-for i = 3:length(f)
+nibrain = '/nfs/e5/stanford/codebase/dnnbrain/bin';
+cwd = pwd; cd(nibrain)
+f = dir(fullfile(nibrain,'db_brain_*'));
+for i = 1:length(f)
     old_name = f(i).name;
-    new_name =  strrep(old_name,'mrf','nb');
-    cmd = sprintf('git mv %s %s',old_name,new_name);
-    system(cmd);
+    new_name =  strrep(old_name,'db_brain_','brain_');
+    cmd = sprintf('git mv %s %s',old_name,new_name)
+     system(cmd);
 end
 cd(cwd);
 

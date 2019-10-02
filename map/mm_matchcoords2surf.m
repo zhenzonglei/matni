@@ -4,7 +4,6 @@ mm_matchcoords2surf(coords,surf_file,dist_thr,label_file)
 % mm_matchcoords2surf(coords,surf_file,dist_thr,label_file)
 % mapping set of coords to surface vertex and label 
 
-
 if nargin < 4, label_file = []; end
 if nargin < 3, dist_thr = 2; end
 
@@ -12,11 +11,14 @@ if nargin < 3, dist_thr = 2; end
 surf = gifti(surf_file);
 surf_coords = double(surf.vertices);
 
-% find nearest surf node for each coords
-D = pdist2(coords,surf_coords);
-coords_vtx = find(any(D < dist_thr,2));
-
+% find nearest surf vertex for each coords
 n_samp = size(coords,1);
+coords_vtx = zeros(n_samp,1);
+D = pdist2(coords,surf_coords);
+[Y,I] = min(D,[],2); 
+coords_vtx(Y < dist_thr) = I(Y < dist_thr);
+
+% map coords to each rois. one coords could be assign multiple rois
 if isempty(label_file)
     n_roi = 1;
     coords_roi = true(n_samp,n_roi);
