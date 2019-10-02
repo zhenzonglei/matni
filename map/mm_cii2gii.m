@@ -1,5 +1,5 @@
-function mm_convertcii2gii(hcp_group_map)
-% mm_convertcii2gii(hcp_group_map)
+function mm_cii2gii(hcp_group_map)
+% mm_cii2gii(hcp_group_map)
 % Convert HCP cifit group map into gifti map
 
 % hcp_group_map = {'MyelinMap_BC', 'corrThickness','thickness'};

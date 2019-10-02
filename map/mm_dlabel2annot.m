@@ -1,5 +1,5 @@
 %% split the hcp cifit group map into gifti map
-function mm_convertdlabel2annot()
+function mm_dlabel2annot()
 clear; close all
 abadir = '/nfs/e5/stanford/ABA';
 nitool = '/nfs/s2/userhome/zhenzonglei/stanford/nitools';

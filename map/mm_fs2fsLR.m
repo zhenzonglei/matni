@@ -1,5 +1,5 @@
-function mm_convertfs2fsLR(fs_map,hemi,fs_mesh_res, fsLR_mesh_res)
-% mm_convertfs2fsLR(fs_map,hemi,fs_mesh_res, fsLR_mesh_res)
+function mm_fs2fsLR(fs_map,hemi,fs_mesh_res, fsLR_mesh_res)
+% mm_fs2fsLR(fs_map,hemi,fs_mesh_res, fsLR_mesh_res)
 % fs_map in gii format
 % hemi,'L' or 'R'
 % fs_mesh_res and fsLR_mesh_res: mesh resolution for fs and fsLR

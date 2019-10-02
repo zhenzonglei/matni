@@ -1,4 +1,4 @@
-function ras_coords = mm_convertcrs2ras(vol_file,crs_coords)
+function ras_coords = mm_crs2ras(vol_file,crs_coords)
 % transform samples' crs coords to ras coords
 
 nii = niftiRead(vol_file,[]);

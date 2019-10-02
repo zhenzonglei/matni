@@ -1,4 +1,4 @@
-function [coords_vox,coords_roi,roi_id] = mm_matchcoords2vol(coords,roi_file, dist_thr)
+function [coords_vox,coords_roi,roi_id] = mm_coords2vol(coords,roi_file, dist_thr)
 % [coords_vox,coords_roi,roi_id] = mm_matchcoords2vol(coords,roi_file, dist_thr)
 % map set of coords to voxel and roi in volume space
 
