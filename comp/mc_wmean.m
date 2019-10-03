@@ -1,5 +1,5 @@
 function y = mc_wmean(x,w,dim)
-%WMEAN   Weighted Average or mean value.
+%y = mc_wmean(x,w,dim) Weighted Average or mean value.
 %   For vectors, WMEAN(X,W) is the weighted mean value of the elements in X
 %   using non-negative weights W. For matrices, WMEAN(X,W) is a row vector 
 %   containing the weighted mean value of each column.  For N-D arrays, 

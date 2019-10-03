@@ -1,42 +1,49 @@
-function surf_expr = mm_sample2surf(gii_surf,sample_coords, sample_expr,dist_thr,interp)
-% surf_expr = mm_sample2surf(gii_surf,sample_coords, sample_expr,dist_thr,interp)
-% ineterp, nn, mean, linear
+function [surf_expr,surf_idx] = mm_sample2surf(surf_coords,sample_coords, sample_expr,...
+    dist_thr,interp)
+% [surf_expr,surf_idx] = mm_sample2surf(surf_coords,sample_coords, sample_expr,...
+% dist_thr,interp)
+% gii_surf and sample_coords are asssumed in the same space, such as MNI152
+% surface
+% ineterp, nn(Nearest Neighbor), nm(Neighbor Mean), nw(Neighbor weighted)
+% surf_expr, the sample expr projected on the surface. zeros are assigned to 
+% the veretx which has no samples projected on. 
+
 if nargin < 5, interp  = 'nm';end
 if nargin < 4, dist_thr = 2; end
 
 
-surf_coords = double(gii_surf.vertices);
-%  surf_faces = gii.faces;
 
 
-n_vtx = length(vertex_coords);
-n_gene = size(sample_expr,2);
-
-
+% Euclidean dist between sample coords and surf coords
 D = pdist2(sample_coords,surf_coords);
-sI = D < dist_thr;
-vI  = find(any(sI));
-surf_expr = zeros(n_vtx,n_gene);
+NB = D < dist_thr; 
+W = exp(-D/std(D(NB))); % similarity weighted
 
+% Index of vertice which has samples projected on 
+surf_idx = find(any(NB));
+n_vtx = length(surf_idx);
+
+
+% project sample to surface
+n_gene = size(sample_expr,2);
+surf_expr = zeros(n_vtx,n_gene);
 switch interp
-    case 'nn'
+    case 'nn' % Nearest Neighbor
         [Y,I] = min(D);
-        surf_expr(Y < dist_thr,:) = sample_expr(I(Y < dist_thr),:);
+        surf_expr = sample_expr(I(Y < dist_thr),:);
         
-    case 'nm'
-        for v = 1:length(vI)
-            expr = sample_expr(sI(:,vI(v)),:);
-            surf_expr(vI(v),:) = mean(expr);
+    case 'nm' % Neighbor Mean
+        for v = 1:n_vtx
+            expr = sample_expr(NB(:,surf_idx(v)),:);
+            surf_expr(v,:) = mean(expr);
         end
         
-    case 'linear'
-        
-        for v = 1:length(vI)
-            expr = sample_expr(sI(:,vI(v)),:);
-            w = D(,);
-            surf_expr(vI(v),:) = mc_wmean(expr,w);
+    case 'nw' % Neighbor weighted
+        for v = 1:n_vtx
+            expr = sample_expr(NB(:,surf_idx(v)),:);
+            w = W(NB(:,surf_idx(v)),surf_idx(v));
+            surf_expr(v,:) = mc_wmean(expr,w);
         end
-        
         
     otherwise
         error('Wrong interp method');
