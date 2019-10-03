@@ -1,36 +1,10 @@
-function mm_overlaycoordsurf(sample_coords,vol_ref_file,vol_out_file,radius,coords_mode)
-% writeCoord2Volume(coords,vol_ref_file,vol_out_file,radius,coords_mode)
-% radius is in voxel unit
+function surf_overlay = mm_overlaycoordsurf(sample_coords,surf_coords,radius)
+% mm_overlaycoordsurf(sample_coords,surf_coords,radius)
+% radius is in mm
 
-if nargin < 5, coords_mode = 'RAS';end
-if nargin < 4, radius = 2;end
-coords = sample_coords;
+if nargin < 3, radius = 5;end
 
-ref = niftiRead(vol_ref_file);
-if strcmp(coords_mode,'RAS')
-    % transform samples' RAS coords to CRS coords
-    coords = round(mrAnatXformCoords(ref.qto_ijk, coords));
-end
-
-% make sphere roi around each coords
-coords = map_makevolroi(coords,ref.dim(1:3),radius);
-
-% make probability map
-pm = zeros(ref.dim(1:3));
-for i = 1:length(coords)
-    sphere_coords = coords{i};
-    vol = zeros(ref.dim);
-    vol(sub2ind(ref.dim, sphere_coords(:,1), sphere_coords(:,2), sphere_coords(:,3))) = 1;
-    % add up
-    pm = pm + vol;
-end
-
-
-% change img data
-ref.data = pm;
-ref.cal_min = min(pm(:));
-ref.cal_max = max(pm(:));
-
-% write the nifti file
-ref.fname = vol_out_file;
-niftiWrite(ref);
+% Euclidean dist between sample coords and surf coords
+D = pdist2(sample_coords,surf_coords);
+% count the sample on each vertex
+surf_overlay = sum(D < radius);
