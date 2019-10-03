@@ -1,6 +1,6 @@
 function [coords_vtx,coords_roi,roi_id] = ...
 mm_coords2surf(coords,gii_surf,dist_thr,gii_label)
-% [coords_vtx,coords_roi,roi_id] = mm_matchcoords2surf(coords,gii_surf,dist_thr,gii_label)
+% [coords_vtx,coords_roi,roi_id] = mm_coords2surf(coords,gii_surf,dist_thr,gii_label)
 % mapping set of coords to surface vertex and label 
 % gii_surf:  gifti surface object 
 % gii_label: gifti scalar object
