@@ -2,17 +2,14 @@ function [surf_expr,surf_idx] = mm_sample2surf(surf_coords,sample_coords, sample
     dist_thr,interp)
 % [surf_expr,surf_idx] = mm_sample2surf(surf_coords,sample_coords, sample_expr,...
 % dist_thr,interp)
-% gii_surf and sample_coords are asssumed in the same space, such as MNI152
+% surf_coords and sample_coords are asssumed in the same space, such as MNI152
 % surface
 % ineterp, nn(Nearest Neighbor), nm(Neighbor Mean), nw(Neighbor weighted)
 % surf_expr, the sample expr projected on the surface. zeros are assigned to 
 % the veretx which has no samples projected on. 
 
 if nargin < 5, interp  = 'nm';end
-if nargin < 4, dist_thr = 2; end
-
-
-
+if nargin < 4, dist_thr = 5; end
 
 % Euclidean dist between sample coords and surf coords
 D = pdist2(sample_coords,surf_coords);
@@ -42,7 +39,7 @@ switch interp
         for v = 1:n_vtx
             expr = sample_expr(NB(:,surf_idx(v)),:);
             w = W(NB(:,surf_idx(v)),surf_idx(v));
-            surf_expr(v,:) = mc_wmean(expr,w);
+            surf_expr(v,:) = w'*expr/sum(w);
         end
         
     otherwise

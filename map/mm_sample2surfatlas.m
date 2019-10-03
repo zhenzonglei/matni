@@ -49,6 +49,6 @@ label_file = fullfile(brainmm_dir,'benson_retinotopy','fs_LR',...
     sprintf('%s.benson17_varea_32k_fs_LR.func.gii',xh));
 
 % Map samples to atlas
-[~,coords_roi,roi_id] = mm_matchcoords2surf(coords,surf_file,dist_thr,label_file);
+[~,coords_roi,roi_id] = mm_coords2surf(coords,surf_file,dist_thr,label_file);
 
 sample_roi_idx = coords_roi;
