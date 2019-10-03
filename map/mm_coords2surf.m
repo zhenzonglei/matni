@@ -1,15 +1,15 @@
 function [coords_vtx,coords_roi,roi_id] = ...
-mm_coords2surf(coords,surf_file,dist_thr,label_file)
-% [coords_vtx,coords_roi,roi_id] = ...
-% mm_matchcoords2surf(coords,surf_file,dist_thr,label_file)
+mm_coords2surf(coords,gii_surf,dist_thr,gii_label)
+% [coords_vtx,coords_roi,roi_id] = mm_matchcoords2surf(coords,gii_surf,dist_thr,gii_label)
 % mapping set of coords to surface vertex and label 
+% gii_surf:  gifti surface object 
+% gii_label: gifti scalar object
 
-if nargin < 4, label_file = []; end
+if nargin < 4, gii_label = []; end
 if nargin < 3, dist_thr = 2; end
 
-% load surf geometry
-surf = gifti(surf_file);
-surf_coords = double(surf.vertices);
+% Get surf geometry
+surf_coords = double(gii_surf.vertices);
 
 % find nearest surf vertex for each coords
 n_samp = size(coords,1);
@@ -19,15 +19,14 @@ D = pdist2(coords,surf_coords);
 coords_vtx(Y < dist_thr) = I(Y < dist_thr);
 
 % map coords to each rois. one coords could be assign multiple rois
-if isempty(label_file)
+if isempty(gii_label)
     n_roi = 1;
     coords_roi = true(n_samp,n_roi);
     roi_id = 1; 
     
 else
     % load surf label
-    surf_label = gifti(label_file);
-    surf_label = surf_label.cdata;
+    surf_label = gii_label.cdata;
     roi_id = unique(surf_label);
     roi_id(roi_id==0) = [];
     n_roi = length(roi_id);

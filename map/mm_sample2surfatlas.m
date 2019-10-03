@@ -5,8 +5,6 @@ if nargin < 2 , hemi = 'L'; end;
 brainmm_dir = '/nfs/e5/stanford/ABA/brainmap';
 surf_dir = fullfile(brainmm_dir,'HCP','HCP_S1200_GroupAvg_v1');
 
-
-
 % Load atlas label
 roi_name = {'V1','V2','V3','hV4','VO1','VO2','LO1','LO2','TO1','TO2','V3b','V3a'};
 n_roi = length(roi_name);
@@ -49,6 +47,7 @@ label_file = fullfile(brainmm_dir,'benson_retinotopy','fs_LR',...
     sprintf('%s.benson17_varea_32k_fs_LR.func.gii',xh));
 
 % Map samples to atlas
-[~,coords_roi,roi_id] = mm_coords2surf(coords,surf_file,dist_thr,label_file);
+surf = gifti(surf_file); label = gifti(label_file);
+[~,coords_roi,roi_id] = mm_coords2surf(coords,surf,dist_thr,label);
 
 sample_roi_idx = coords_roi;
