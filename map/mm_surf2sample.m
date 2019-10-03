@@ -1,7 +1,8 @@
-function [surf_data,surf_idx] = mm_surf2sample(sample_coords,...
+function [sample_data,sample_idx] = mm_surf2sample(sample_coords,...
     gii_surf, gii_data, surf_space)
-
 % surf_space, 'MNI305','MNI152','Native'
+% sample_data, sample_data for each sample 
+% sample_idx, index for the samples which has surface data
 
 if nargin < 4, surf_space  = 'MNI152';end
 if nargin < 3, gii_data = []; end 
@@ -20,36 +21,37 @@ end
 % Euclidean dist between sample coords and surf coords
 surf_coords = double(gii_surf.vertices);
 D = pdist2(sample_coords,surf_coords);
-surf_idx = D < dist_thr; 
-W = exp(-D/std(D(surf_idx))); % similarity weighted
+NB = D < dist_thr; 
+W = exp(-D/std(D(NB))); % similarity weighted
+sample_idx = find(any(NB,2));
 
 % if no sample data are provided, only count the sample number for 
 % each surf vertics
 if isempty(gii_data)
-    surf_data = sum(surf_idx,2);
+    sample_data = sum(NB,2);
 
 else 
     % project sample data to surface
     data = gii_data.cdata;
-    sdim = size(sample_coords,1);
+    sdim = length(sample_idx,1);
     tdim = size(data,2);
-    surf_data = zeros(sdim,tdim);
+    sample_data = zeros(sdim,tdim);
     switch interp
         case 'nn' % Nearest Neighbor
             [Y,I] = min(D,2);
-            surf_data = data(I(Y < dist_thr),:);
+            sample_data = data(I(Y < dist_thr),:);
             
         case 'nm' % Neighbor Mean
             for v = 1:sdim
-                expr = data(NB(:,surf_idx(v)),:);
-                surf_data(v,:) = mean(expr);
+                meas = data(NB(sample_idx(v),:),:);
+                sample_data(v,:) = mean(meas);
             end
             
         case 'nw' % Neighbor weighted
             for v = 1:sdim
-                expr = data(NB(:,surf_idx(v)),:);
-                w = W(NB(:,surf_idx(v)),surf_idx(v));
-                surf_data(v,:) = w'*expr/sum(w);
+                meas = data(NB(sample_idx(v),:),:);
+                w = W(sample_idx(v),NB(sample_idx(v),:));
+                sample_data(v,:) = w*meas/sum(w);
             end
             
         otherwise
