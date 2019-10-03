@@ -1,4 +1,4 @@
-function meas = mm_readcoordsvolscalar(sample_coords,vol_file,radius,coords_mode)
+function meas = mm_vol2sample(sample_coords,vol_file,radius,coords_mode)
 % meas = map_readvolscalar(sample_coords,vol_file,radius,coords_mode)
 % both coords and vol are in the same space, i.e., MNI space or native.
 if nargin < 4, coords_mode = 'RAS';end

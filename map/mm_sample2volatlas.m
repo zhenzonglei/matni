@@ -30,10 +30,6 @@ switch atlas_name
             'Buckner2011_17Networks_MNI152_FreeSurferConformed1mm_TightMask.nii.gz');
         label = fullfile(data_dir,'buckner','Buckner2011_17Networks_label.txt');
         
-        
-        
-        
-        
     case 'yeo'
         atlas = fullfile(data_dir,'yeoAtlas',...
             'Yeo2011_7Networks_MNI152_FreeSurferConformed1mm.nii.gz');
@@ -50,7 +46,7 @@ switch atlas_name
 end
 
 % Map samples to atlas
-[~,coords_roi,roi_id] = mm_matchcoords2vol(coords,atlas,dist_thr);
+[~,coords_roi,roi_id] = mm_coords2vol(coords,atlas,dist_thr);
 
 
 % Load atlas label
