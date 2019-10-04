@@ -1,12 +1,12 @@
-function [coords_vtx,coords_roi,roi_id] = ...
-mm_coords2surf(coords,gii_surf,dist_thr,gii_label)
-% [coords_vtx,coords_roi,roi_id] = mm_coords2surf(coords,gii_surf,dist_thr,gii_label)
+function [coords_vtx,coords_roi,roi_id] = mm_coordsonsurf(coords,gii_surf,...
+    gii_label,dist_thr)
+% [coords_vtx,coords_roi,roi_id] = mm_coords2surf(coords,gii_surf,gii_label,dist_thr)
 % mapping set of coords to surface vertex and label 
 % gii_surf:  gifti surface object 
 % gii_label: gifti scalar object
 
-if nargin < 4, gii_label = []; end
-if nargin < 3, dist_thr = 2; end
+if nargin < 4, dist_thr = 5; end
+if nargin < 3, gii_label = []; end
 
 % Get surf geometry
 surf_coords = double(gii_surf.vertices);
