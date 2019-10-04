@@ -1,4 +1,4 @@
-function mm_convertvol2fsLR(atlasDir)
+function mm_vol2fsLR(atlasDir)
 
 %% map cytoAtlas to fsLR
 brainmap_dir = '/nfs/e5/stanford/ABA/brainmap';

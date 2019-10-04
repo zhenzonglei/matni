@@ -13,8 +13,6 @@ if nargin < 5, interp  = 'nm';end
 if nargin < 4, dist_thr = 5; end
 if nargin < 3, sample_data = [];end
 
-
-
 src_coords = sample_coords;
 targ_coords = double(gii_surf.vertices);
 src_data = sample_data;
