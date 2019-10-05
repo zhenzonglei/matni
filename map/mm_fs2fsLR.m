@@ -1,36 +1,39 @@
-function mm_fs2fsLR(fs_map,hemi,fs_mesh_res, fsLR_mesh_res)
-% mm_fs2fsLR(fs_map,hemi,fs_mesh_res, fsLR_mesh_res)
-% fs_map in gii format
-% hemi,'L' or 'R'
-% fs_mesh_res and fsLR_mesh_res: mesh resolution for fs and fsLR
+function mm_fs2fsLR(fs_map,hemi,fs_res,fsLR_res)
+% mm_fs2fsLR(fs_map,hemi,fs_res,fsLR_res)
+% Transform fs surface map to fsLR surface map
+% hemi, lh or rh
+% fs_map, fs map file in gii format
+% fs_res and fsLR_res: mesh resolution for fs and fsLR
 
-if nargin < 4, fsLR_mesh_res = '32k';end
-if nargin < 3, fs_mesh_res = '164k';end
-
-if ~any(strcmp(hemi,{'L','R'}))
-    error('hemi is L or R');
+if nargin < 4, fsLR_res = '32k';end
+if nargin < 3, fs_res = '164k';end
+if strcmp(hemi,'lh')
+    hemi = 'L';
+elseif strcmp(hemi,'rh')
+    hemi = 'R';
+else
+    error('hemi should be lh or rh');
 end
 
+rsfs = fullfile('/nfs/e5/stanford/ABA/brainmap/surface',...
+'standard_mesh_atlases/resample_fsaverage');
 
 
-resamp_fs = '../template/standard_mesh_atlases/resample_fsaverage';
-idx = strfind(fs_map,'.gii');idx = idx-1;
-fs_map_name = fs_map(1:idx);
+[map_dir,map_name,map_ext] = fileparts(fs_map);
+fsLR_map = fullfile(map_dir,sprintf('%s_fsLR.%s',map_name, map_ext));
 
 
-fsLR_map = sprintf('%s_fsLR.gii',fs_map_name);
+fs_sph = fullfile(rsfs,...
+    sprintf('fsaverage_std_sphere.%s.%s_fsavg_%s.surf.gii',hemi,fs_res,hemi));
 
-fs_sph = fullfile(resamp_fs,...
-    sprintf('fsaverage_std_sphere.%s.%s_fsavg_%s.surf.gii',hemi,fs_mesh_res,hemi));
+fsLR_sph = fullfile(rsfs,...
+    sprintf('fs_LR-deformed_to-fsaverage.%s.sphere.%s_fs_LR.surf.gii',hemi,fsLR_res));
 
-fsLR_sph = fullfile(resamp_fs,...
-    sprintf('fs_LR-deformed_to-fsaverage.%s.sphere.%s_fs_LR.surf.gii',hemi,fsLR_mesh_res));
+fs_shape =  fullfile(rsfs,...
+    sprintf('fsaverage.%s.midthickness_va_avg.%s_fsavg_%s.shape.gii',hemi,fs_res,hemi));
 
-fs_shape =  fullfile(resamp_fs,...
-    sprintf('fsaverage.%s.midthickness_va_avg.%s_fsavg_%s.shape.gii',hemi,fs_mesh_res,hemi));
-
-fsLR_shape =  fullfile(resamp_fs,...
-    sprintf('fs_LR.%s.midthickness_va_avg.%s_fs_LR.shape.gii',hemi,fsLR_mesh_res));
+fsLR_shape =  fullfile(rsfs,...
+    sprintf('fs_LR.%s.midthickness_va_avg.%s_fs_LR.shape.gii',hemi,fsLR_res));
 
 wb_cmd = sprintf('wb_command -metric-resample %s %s %s ADAP_BARY_AREA %s -area-metrics %s %s',...
     fs_map, fs_sph, fsLR_sph, fsLR_map, fs_shape, fsLR_shape);
