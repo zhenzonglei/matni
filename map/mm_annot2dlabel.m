@@ -1,24 +1,24 @@
 function mm_annot2dlabel(annotDir)
 
-% ------------ map vcAtlas to fsLR-------------
-brainmap_dir = '/nfs/e5/stanford/ABA/brainmap';
-surf_dir = fullfile('HCP','HCP_S1200_GroupAvg_v1');
-cd(brainmap_dir)
-
-if nargin < 1
-  annotDir = fullfile(brainmap_dir,'vcAtlas'); 
-end
-
-%%  vcAtlas to gii
-cd(annotDir);
-xh = {'lh','rh'};
-for h = 1:2
-     mris_convert = ...
-         sprintf('mris_convert --annot %s.vcAtlas.annot %s.white %s.vcAtlas.func.gii',...
-         xh{h},xh{h},xh{h});
-    
-    system(mris_convert);
-end
+% % ------------ map vcAtlas to fsLR-------------
+% brainmap_dir = '/nfs/e5/stanford/ABA/brainmap';
+% surf_dir = fullfile('HCP','HCP_S1200_GroupAvg_v1');
+% cd(brainmap_dir)
+% 
+% if nargin < 1
+%   annotDir = fullfile(brainmap_dir,'vcAtlas'); 
+% end
+% 
+% %%  vcAtlas to gii
+% cd(annotDir);
+% xh = {'lh','rh'};
+% for h = 1:2
+%      mris_convert = ...
+%          sprintf('mris_convert --annot %s.vcAtlas.annot %s.white %s.vcAtlas.func.gii',...
+%          xh{h},xh{h},xh{h});
+%     
+%     system(mris_convert);
+% end
 
 
 

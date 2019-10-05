@@ -1,12 +1,14 @@
-function mm_fs2fsLR(fs_map,hemi,fs_res,fsLR_res)
+function mm_fs2fsLR(fs_map,hemi,fs_res,fsLR_res,islabel)
 % mm_fs2fsLR(fs_map,hemi,fs_res,fsLR_res)
 % Transform fs surface map to fsLR surface map
 % hemi, lh or rh
 % fs_map, fs map file in gii format
 % fs_res and fsLR_res: mesh resolution for fs and fsLR
 
+if nargin < 5, islabel = false; end 
 if nargin < 4, fsLR_res = '32k';end
 if nargin < 3, fs_res = '164k';end
+
 if strcmp(hemi,'lh')
     hemi = 'L';
 elseif strcmp(hemi,'rh')
@@ -37,6 +39,10 @@ fsLR_shape =  fullfile(rsfs,...
 
 wb_cmd = sprintf('wb_command -metric-resample %s %s %s ADAP_BARY_AREA %s -area-metrics %s %s',...
     fs_map, fs_sph, fsLR_sph, fsLR_map, fs_shape, fsLR_shape);
+
+if islabel
+  wb_cmd = [wb_cmd,' -largest'];
+end
 system(wb_cmd);
 
 
