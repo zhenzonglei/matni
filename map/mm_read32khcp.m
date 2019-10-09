@@ -27,8 +27,7 @@ switch hemi
 end
 
 stru_name = ['CIFTI_STRUCTURE_',upper(stru_name),'_',upper(hemi)];
-header = fullfile('/nfs/e5/stanford/ABA/brainmap/HCP/headr',...
-    '32kfsLR_cifti_header.mat');
+header = fullfile('../template','32kfsLR_cifti_header.mat');
 load(header,stru_name);
 index = eval([stru_name,'.index']);
 
